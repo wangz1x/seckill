@@ -10,13 +10,13 @@ create table seckill (
 `name` varchar(120) not null comment '商品名称',
 `number` int not null comment '库存数量',
 `start_time` timestamp not null comment '秒杀开启时间',
-`end_time` timestamp not null comment '秒杀结束时间',
+`end_time` timestamp not null default current_timestamp comment '秒杀结束时间',
 `create_time` timestamp not null default current_timestamp comment '秒杀创建时间',
 primary key(seckill_id),
 key idx_start_time(start_time),
 key idx_end_time(end_time),
 key idx_create_time(create_time)
-) engine=InnoDB auto_increment=1000 default charset=utf8mb4 comment '秒杀库存表';
+) engine=InnoDB auto_increment=1000 default charset=utf8 comment '秒杀库存表';
 
 -- 初始化数据
 insert into
@@ -36,4 +36,4 @@ create table success_killed(
 `create_time` timestamp not null default current_timestamp comment '创建时间',
 primary key(seckill_id, user_phone),
 key idx_create_time(create_time)
-) engine=InnoDB auto_increment=1000 default charset=utf8mb4 comment '秒杀成功明细表';
+) engine=InnoDB auto_increment=1000 default charset=utf8 comment '秒杀成功明细表';

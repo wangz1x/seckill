@@ -1,6 +1,7 @@
 package com.wzx.dao;
 
 import com.wzx.entity.SuccessKilled;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 
@@ -13,16 +14,16 @@ public interface SuccessKilledDao {
     /**
      * 生成秒杀记录
      * @param seckillId
-     * @param uesrPhone
-     * @param createTime
+     * @param userPhone
      * @return
      */
-    int insertSuccessKilled(long seckillId, long uesrPhone, Date createTime);
+    int insertSuccessKilled(@Param("seckillId") long seckillId, @Param("userPhone") long userPhone);
 
     /**
-     * 查询指定商品id的所有秒杀记录, 并携带秒杀单
+     * 查询指定用户对某商品的秒杀记录, 并携带秒杀单
      * @param seckillId
+     * @param userPhone
      * @return
      */
-    SuccessKilled queryByIdWithSeckill(long seckillId);
+    SuccessKilled queryByIdWithSeckill(@Param("seckillId") long seckillId, @Param("userPhone")  long userPhone);
 }
