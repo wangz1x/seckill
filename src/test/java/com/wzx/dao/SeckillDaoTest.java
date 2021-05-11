@@ -42,4 +42,10 @@ public class SeckillDaoTest {
             System.out.println(seckill);
         }
     }
+
+    @Test
+    public void countTest() {
+        int count = seckillDao.count();
+        System.out.println(count);
+    }
 }

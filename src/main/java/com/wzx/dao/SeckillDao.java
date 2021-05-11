@@ -2,6 +2,7 @@ package com.wzx.dao;
 
 import com.wzx.entity.Seckill;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
@@ -26,6 +27,12 @@ public interface SeckillDao {
      * @return
      */
     Seckill queryById(long seckillId);
+
+    /**
+     * 返回秒杀数量
+     * @return
+     */
+    int count();
 
     /**
      * 查询指定范围的所有秒杀单

@@ -1,6 +1,7 @@
 package com.wzx.dto;
 
 import com.wzx.entity.SuccessKilled;
+import com.wzx.enums.SeckillExecutionStateEnum;
 
 /**
  * 秒杀执行结果
@@ -12,23 +13,27 @@ public class SeckillExecution {
 
     private long seckillId;
 
+    //  1: 秒杀成功
+    //  0: 秒杀结束
+    // -1: 重复秒杀
+    // -2: 系统异常
     private int state;
 
     private String stateInfo;
 
     private SuccessKilled successKilled;
 
-    public SeckillExecution(long seckillId, int state, String stateInfo, SuccessKilled successKilled) {
+    public SeckillExecution(long seckillId, SeckillExecutionStateEnum stateEnum, SuccessKilled successKilled) {
         this.seckillId = seckillId;
-        this.state = state;
-        this.stateInfo = stateInfo;
+        this.state = stateEnum.getState();
+        this.stateInfo = stateEnum.getStateInfo();
         this.successKilled = successKilled;
     }
 
-    public SeckillExecution(long seckillId, int state, String stateInfo) {
+    public SeckillExecution(long seckillId, SeckillExecutionStateEnum stateEnum) {
         this.seckillId = seckillId;
-        this.state = state;
-        this.stateInfo = stateInfo;
+        this.state = stateEnum.getState();
+        this.stateInfo = stateEnum.getStateInfo();
     }
 
     public long getSeckillId() {

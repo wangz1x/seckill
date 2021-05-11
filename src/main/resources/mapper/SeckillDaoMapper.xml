@@ -28,4 +28,7 @@
     <!--         select seckill_id, name, number, start_time, end_time, create_time
             from (select seckill_id from seckill limit #{offset}, #{limit}) a
                      left join seckill b on a.seckill_id = b.seckill_id -->
+    <select id="count" resultType="int">
+        select count(*) from seckill;
+    </select>
 </mapper>
