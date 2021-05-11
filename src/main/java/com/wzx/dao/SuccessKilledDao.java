@@ -3,8 +3,6 @@ package com.wzx.dao;
 import com.wzx.entity.SuccessKilled;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.Date;
-
 /**
  * @author wangzx22@163.com
  * @date 2021/5/7 下午8:14

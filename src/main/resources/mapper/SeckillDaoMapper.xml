@@ -25,4 +25,7 @@
         order by create_time
             limit #{offset}, #{limit}
     </select>
+    <!--         select seckill_id, name, number, start_time, end_time, create_time
+            from (select seckill_id from seckill limit #{offset}, #{limit}) a
+                     left join seckill b on a.seckill_id = b.seckill_id -->
 </mapper>
