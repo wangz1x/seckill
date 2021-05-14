@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 1. 包扫描web相关bean -->
+    <context:component-scan base-package="com.wzx.controller"/>
+
+    <!-- 2. 开启SpringMVC注解模式(和tx:annotation-driven类比) -->
+    <!-- 简化配置：
+        (1) 自动注册: DefaultAnnotationHandlerMapping, AnnotationMethodHandlerAdapter(SpringMVC处理流程中见到的)
+        (2) 提供一系列功能: 数据绑定(@PathVariable?), 数字和日期的格式化(@NumberFormat, @DateFormat?)
+                          XML, JSON默认读写支持
+     -->
+    <mvc:annotation-driven/>
+
+    <!-- 3. 静态资源默认Servlet配置 -->
+    <!-- (1) 加入对静态资源的处理: js, gif, png
+         (2) 允许使用"/"进行整体映射
+    -->
+    <mvc:default-servlet-handler/>
+
+    <!-- 4. 配置jsp显示ViewResolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 约定大于配置：
+     约定： 不要配置的太具体, 最好是抽象一点, 这样后续有新增等需求时, 可直接使用
+     配置： 配置的死死的, 什么玩意都指定到一个具体的东西, 后续要新增的话还要照其对新增配置-->
+</beans>

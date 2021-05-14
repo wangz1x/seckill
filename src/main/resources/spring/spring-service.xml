@@ -2,12 +2,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- 1. 扫描service包下所有使用注解的类型-->
     <context:component-scan base-package="com.wzx.service"/>
 
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+<!--        <property name="nestedTransactionAllowed" value="true"/>-->
+    </bean>
+
+    <!-- 配置声明式事务 -->
+    <tx:annotation-driven/>
     <!-- 约定大于配置：
      约定： 不要配置的太具体, 最好是抽象一点, 这样后续有新增等需求时, 可直接使用
      配置： 配置的死死的, 什么玩意都指定到一个具体的东西, 后续要新增的话还要照其对新增配置-->

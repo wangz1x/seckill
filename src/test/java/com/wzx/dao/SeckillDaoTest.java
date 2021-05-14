@@ -3,6 +3,8 @@ package com.wzx.dao;
 import com.wzx.entity.Seckill;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -16,7 +18,7 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
 public class SeckillDaoTest {
-
+    Logger logger = LoggerFactory.getLogger(SeckillDaoTest.class);
     // 注入Dao实现类
     @Autowired
     private SeckillDao seckillDao;
@@ -32,7 +34,7 @@ public class SeckillDaoTest {
     public void queryById() {
         long id = 1000;
         Seckill seckill = seckillDao.queryById(id);
-        System.out.println(seckill);
+        logger.info("seckill={}", seckill);
     }
 
     @Test
