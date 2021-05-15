@@ -26,7 +26,7 @@
         </div>
     </div>
 </div>
-<div id="killphoneModal" class="modal fade">
+<div id="killPhoneModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -53,9 +53,14 @@
         </div>
     </div>
 </div>
-<%--<script src="https://cdn.bootcdn.net/ajax/libs/jquery-countdown/2.1.0/js/jquery.countdown.js"></script>--%>
-<script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+
+<%-- 1. 有配套的jquery.plugin, 也需要导入 --%>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-countdown/2.1.0/js/jquery.plugin.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-countdown/2.1.0/js/jquery.countdown.min.js"></script>
+<%-- 2. 直接用下边的也可以 --%>
+<%--<script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>--%>
 <script src="${pageContext.request.contextPath}/resources/js/seckill.js"></script>
 <script type="text/javascript">
     $(function () {

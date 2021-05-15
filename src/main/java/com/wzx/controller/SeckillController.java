@@ -23,7 +23,6 @@ import java.util.List;
  * @email wangzx22@163.com
  * @date 2021/5/14 上午11:14
  */
-
 @Controller
 @RequestMapping("/seckill")
 public class SeckillController {
@@ -66,7 +65,7 @@ public class SeckillController {
             Exposer exposer = seckillService.exportSeckillUrl(seckillId);
             result = new SeckillResult<Exposer>(true, exposer);
         } catch (Exception e) {
-            result = new SeckillResult<Exposer>(false, e.getMessage());
+            result = new SeckillResult<Exposer>(true, e.getMessage());
             logger.error(e.getMessage(), e);
         }
         return result;
@@ -96,9 +95,7 @@ public class SeckillController {
         } catch (Exception e) {
             seckillExecution = new SeckillExecution(seckillId, SeckillExecutionStateEnum.INNER_ERROR);
         }
-        // 秒杀是否成功
-        boolean res = seckillExecution.getState() == 1;
-        result = new SeckillResult<SeckillExecution>(res, seckillExecution);
+        result = new SeckillResult<SeckillExecution>(true, seckillExecution);
         return result;
     }
 
