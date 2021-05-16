@@ -36,6 +36,7 @@ public class SeckillServiceImplTest {
     public void getAllSeckill() {
         List<Seckill> allSeckill = seckillService.getAllSeckill();
         logger.info("SeckillList = {}", allSeckill);
+        logger.error("seckillService.getClass(): " + seckillService.getClass());
     }
 
     @Test

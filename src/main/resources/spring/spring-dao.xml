@@ -34,11 +34,12 @@
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <!-- 扫描entity包, 使用别名(但是mybatis自身不是也支持Alias吗) -->
         <property name="typeAliasesPackage" value="com.wzx.entity"/>
-        <!-- 扫描mapper文件 -->
+        <!-- 扫描mapper文件, 每个mapper文件会对应一个Dao -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
 
     <!-- 4.配置扫描Dao接口包, 动态扫描并实现Dao接口, 并自动注入到Spring容器中 -->
+    <!-- 猜的是, spring实现Dao接口时, 会用到Mapper对象 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 后处理 -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>  <!--TODO 为什么这里可以用value-->

@@ -32,6 +32,7 @@ import java.util.List;
  */
 @Service
 public class SeckillServiceImpl implements SeckillService {
+
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     // 混淆值
